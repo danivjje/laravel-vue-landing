@@ -1,0 +1,15 @@
+<script setup>
+import RedirectRegisterForm from "@/components/ui/RedirectRegisterForm.vue";
+</script>
+
+<template>
+    <section class="px-[610px] pt-[88px] flex flex-col items-center">
+        <h2 class="text-5xl text-[#D5EAFF] text-center mb-[54px]">
+            Register your account now <br />
+            and start to trade
+        </h2>
+        <RedirectRegisterForm>
+            <img src="/images/white-logotype.svg" alt="logo" class="ml-9 w-fit" />
+        </RedirectRegisterForm>
+    </section>
+</template>
