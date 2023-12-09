@@ -27,3 +27,12 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 Route::post('logout', [App\Http\Controllers\Auth\AuthenticationController::class, 'logOut']);
 
 Route::get('check', [App\Http\Controllers\Auth\AuthenticationController::class, 'checkAuth']);
+
+Route::get('coins', [App\Http\Controllers\CoinsController::class, 'index'])->middleware('auth');
+
+Route::group(['middleware' => 'admin'], function() {
+    Route::get('users', [App\Http\Controllers\UserController::class, 'index']);
+    Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+
+    Route::post('coins', [App\Http\Controllers\CoinsController::class, 'update']);
+});
