@@ -1,7 +1,8 @@
 <script setup></script>
 
 <template>
-    <section class="flex px-[220px] py-[88px]">
+    <section class="flex px-[220px] py-[88px] bg-no-repeat bg-[position:left_top_-450px,_right_330px_center]"
+             style="background-image: url('/images/about-left-light.svg'), url('/images/about-right-light.svg')">
         <div class="max-w-[680px] mr-auto">
             <h2 class="text-5xl text-[#D5EAFF] mb-4">Bitles is your reliable guide in the world of digital assets</h2>
             <p class="text-lg text-[#464E62] max-w-[640px]">

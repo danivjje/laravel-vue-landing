@@ -6,7 +6,8 @@ const { csrfToken } = defineProps({ csrfToken: String });
 </script>
 
 <template>
-    <section class="overflow-hidden border-solid border-b-[1px] border-[#252C41]">
+    <section class="overflow-hidden border-solid border-b-[1px] border-[#252C41] bg-no-repeat bg-[position:right_top,_left_top_50px]"
+             style="background-image: url('/images/offer-light.svg'), url('/images/offer-bottom-light.svg')">
         <div class="w-full flex items-start px-40 border-solid border-b-[1px] border-[#252C41]">
             <div class="flex flex-col max-w-[700px] mt-[88px]">
                 <p
