@@ -3,17 +3,19 @@ import { signInUser } from "@/api";
 import { Link, Head, router } from "@inertiajs/vue3";
 import { reactive, ref } from "vue";
 import { useAuthStore } from "@/Store/auth.js";
+import {useCommonStore} from "@/Store/common.js";
 
 const authStore = useAuthStore();
+const commonStore = useCommonStore();
 
 const error = ref("");
 const data = reactive({
-    email: "",
     password: "",
 });
 
 const handleLoginUser = async (csrf) => {
-    const email = data.email.trim();
+    error.value = '';
+    const email = commonStore.email.trim();
     const password = data.password.trim();
 
     if (!email || email.length < 5 || !email.includes("@") || !email.includes(".")) return (error.value = "Invalid email");
@@ -21,14 +23,17 @@ const handleLoginUser = async (csrf) => {
 
     try {
         const response = await signInUser({ email, password }, csrf);
+
         if ("user" in response) {
             router.visit('/');
             authStore.authenticationInformation.isAuthenticated = true;
             authStore.authenticationInformation.user = response.user;
+        } else {
+            throw Error(response.error || '');
         }
     } catch (err) {
-        console.log(err);
-        error.value = "Unknown error, try again or reload the page";
+        if (err) error.value = err;
+        else error.value = "unknown error, try again or reload the page";
     }
 };
 </script>
@@ -44,7 +49,7 @@ const handleLoginUser = async (csrf) => {
                 {{ error }}
             </h3>
 
-            <MainInput v-model="data.email" type="email" placeholder="E-mail" class="mb-4" />
+            <MainInput v-model="commonStore.email" type="email" placeholder="E-mail" class="mb-4" />
             <MainInput v-model="data.password" type="password" placeholder="Password" class="mb-4" />
             <MainButton button-type="blue">Sign In</MainButton>
         </form>

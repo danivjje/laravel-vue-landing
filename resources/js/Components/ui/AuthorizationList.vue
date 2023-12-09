@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/vue3";
 
 <template>
     <ul class="flex">
-        <li class="mr-4">
+        <li class="mr-2">
             <Link href="/sign-up">
                 <MainButton button-type="gray">Register</MainButton>
             </Link>

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::inertia('/admin-panel', 'AdminPanelPage')->middleware('admin');
 Route::inertia('/sign-up', 'SignUpPage')->middleware('guest')->name('sign-up');
 Route::inertia('/sign-in', 'SignInPage')->middleware('guest')->name('sign-in');
-Route::inertia('/', 'HomePage')->middleware('auth')->name('home');
+Route::inertia('/', 'HomePage')->name('home');
 
 Route::post('login', [App\Http\Controllers\Auth\AuthenticationController::class, 'login']);
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
@@ -28,7 +28,7 @@ Route::post('logout', [App\Http\Controllers\Auth\AuthenticationController::class
 
 Route::get('check', [App\Http\Controllers\Auth\AuthenticationController::class, 'checkAuth']);
 
-Route::get('coins', [App\Http\Controllers\CoinsController::class, 'index'])->middleware('auth');
+Route::get('coins', [App\Http\Controllers\CoinsController::class, 'index']);
 
 Route::group(['middleware' => 'admin'], function() {
     Route::get('users', [App\Http\Controllers\UserController::class, 'index']);

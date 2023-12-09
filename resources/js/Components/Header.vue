@@ -35,7 +35,7 @@ const authStore = useAuthStore();
         </nav>
         <span class="block w-px h-6 bg-[#252C41] rounded-full mx-9"></span>
             <Link href="/admin-panel">
-                <MainButton v-if="authStore.authenticationInformation.user?.is_admin" buttonType="blue" class="mr-4">
+                <MainButton v-if="authStore.authenticationInformation.user?.is_admin" buttonType="blue" class="mr-2">
                     Admin Panel
                 </MainButton>
             </Link>
