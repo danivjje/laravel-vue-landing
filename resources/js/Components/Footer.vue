@@ -16,9 +16,9 @@ const socialLinks = [
 </script>
 
 <template>
-    <footer class="pt-16 px-40 pb-8 flex flex-col items-center">
-        <div class="flex w-full mb-16">
-            <div class="mr-auto">
+    <footer class="pt-16 px-40 pb-8 flex flex-col items-center max-[1580px]:px-10 max-sm:px-5">
+        <div class="flex w-full mb-16 max-sm:flex-col max-sm:items-center">
+            <div class="mr-auto max-sm:mr-0 max-sm:mb-10 max-sm:flex max-sm:flex-col max-sm:items-center">
                 <Link class="block" href="/">
                     <img
                         class="mb-12 hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.25)] transition-[filter] duration-150"
@@ -26,7 +26,7 @@ const socialLinks = [
                         alt="logo"
                     />
                 </Link>
-                <ul class="flex mb-[68px]">
+                <ul class="flex mb-[68px] max-sm:justify-center">
                     <li
                         v-for="(item, index) in socialLinks"
                         :key="index"

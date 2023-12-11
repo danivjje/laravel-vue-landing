@@ -97,39 +97,39 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="pt-[100px]">
+    <div class="pt-[100px] max-xl:px-10 max-lg:px-5">
         <div class="border-solid border-[1px] border-[#222D3E] rounded-2xl mb-4">
             <table class="w-full background-gradient rounded-2xl">
                 <tr>
                     <th class="text-[#6D799C] font-medium text-base py-5 text-left pl-6">Asset</th>
                     <th class="text-[#6D799C] font-medium text-base py-5">Price</th>
-                    <th class="text-[#6D799C] font-medium text-base py-5">Change</th>
-                    <th class="text-[#6D799C] font-medium text-base py-5">Volume</th>
-                    <th class="hidden"></th>
+                    <th class="text-[#6D799C] font-medium text-base py-5 max-sm:hidden">Change</th>
+                    <th class="text-[#6D799C] font-medium text-base py-5 max-md:hidden">Volume</th>
+                    <th class="hidden max-[500px]:hidden"></th>
                 </tr>
                 <tr v-for="symbol in fetchedData" class="border-t-[1px] border-solid border-[#222D3E]">
                     <td class="flex items-center pl-6 py-5">
                         <img src="/images/bitcoin-icon.svg" alt="" role="presentation" class="mr-5" />
-                        <span class="text-xl text-[#C7E1FF] mr-2">{{ coinNames[symbol.symbol] }}</span>
-                        <span class="text-base text-[#525A71] translate-y-[1px]">{{
-                            symbol.symbol.substr(0, symbol.symbol.length - 4)
-                        }}</span>
+                        <span class="text-xl text-[#C7E1FF] mr-2 max-[500px]:hidden">{{ coinNames[symbol.symbol] }}</span>
+                        <span class="text-base text-[#525A71] translate-y-[1px]">
+                            {{ symbol.symbol.substr(0, symbol.symbol.length - 4) }}
+                        </span>
                     </td>
                     <td class="text-center text-[#C7E1FF] text-xl py-5">
                         <span class="text-base">$</span> {{ new Intl.NumberFormat("de-DE").format(symbol.lastPrice) }}
                     </td>
                     <td
-                        class="text-center text-xl text-[#58F0A7] py-5"
+                        class="text-center text-xl text-[#58F0A7] py-5 max-sm:hidden"
                         :class="{ 'text-[#F94B55]': Number(symbol.priceChangePercent) < 0 }"
                     >
                         {{ Math.abs(Number(symbol.priceChangePercent)).toFixed(2) }}
                         <span class="text-base">%</span>
                     </td>
-                    <td class="text-center text-[#C7E1FF] text-xl py-5">
+                    <td class="text-center text-[#C7E1FF] text-xl py-5 max-md:hidden">
                         <span>{{ formatVolumeNumber(symbol.quoteVolume).number }}</span>
                         <span class="text-base">{{ formatVolumeNumber(symbol.quoteVolume).letter }}</span>
                     </td>
-                    <td class="pr-5 text-right py-5">
+                    <td class="pr-5 text-right py-5 max-[500px]:hidden">
                         <button
                             class="text-[#2FBDFC] text-lg font-medium py-1.5 px-4 rounded-md border-[1px] border-solid border-[#2FBDFC] transition-colors hover:text-[#10161F] hover:bg-[#2FBDFC]"
                         >
