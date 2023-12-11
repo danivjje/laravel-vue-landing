@@ -1,13 +1,13 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted } from "vue";
 
 import { Head } from "@inertiajs/vue3";
-import Header from "@/components/Header.vue";
-import OfferSection from "@/components/OfferSection.vue";
-import AboutSection from "@/components/AboutSection.vue";
-import BenefitsSection from "@/components/BenefitsSection.vue";
-import RegisterNowSection from "@/components/RegisterNowSection.vue";
-import Footer from "@/components/Footer.vue";
+import Header from "@/Components/Header.vue";
+import OfferSection from "@/Components/OfferSection.vue";
+import AboutSection from "@/Components/AboutSection.vue";
+import BenefitsSection from "@/Components/BenefitsSection.vue";
+import RegisterNowSection from "@/Components/RegisterNowSection.vue";
+import Footer from "@/Components/Footer.vue";
 import { useAuthStore } from "@/Store/auth.js";
 
 const { csrfToken } = defineProps({ csrfToken: String });
@@ -41,6 +41,6 @@ onMounted(() => {
 
 <style scoped>
 .line {
-    background: linear-gradient(90deg, rgba(64, 193, 251, 0.00) 8.36%, #40C1FB 50.39%, rgba(64, 193, 251, 0.00) 91.67%), #252C41;
+    background: linear-gradient(90deg, rgba(64, 193, 251, 0) 8.36%, #40c1fb 50.39%, rgba(64, 193, 251, 0) 91.67%), #252c41;
 }
 </style>

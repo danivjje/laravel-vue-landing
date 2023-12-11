@@ -1,9 +1,9 @@
 <script setup>
 import { Link, Head, router } from "@inertiajs/vue3";
-import { signUpUser } from "@/api";
+import { signUpUser } from "@/Api";
 import { reactive, ref } from "vue";
 import { useAuthStore } from "@/Store/auth.js";
-import {useCommonStore} from "@/Store/common.js";
+import { useCommonStore } from "@/Store/common.js";
 
 const authStore = useAuthStore();
 const commonStore = useCommonStore();
@@ -28,15 +28,15 @@ const handleRegisterUser = async (csrf) => {
 
     try {
         const response = await signUpUser({ email, password }, csrf);
-        if ('user' in response) {
-            router.visit('/');
+        if ("user" in response) {
+            router.visit("/");
             authStore.authenticationInformation.isAuthenticated = true;
             authStore.authenticationInformation.user = response.user;
         } else {
             throw Error(response);
         }
     } catch (err) {
-        error.value = 'user with this email already exists';
+        error.value = "user with this email already exists";
     }
 };
 </script>

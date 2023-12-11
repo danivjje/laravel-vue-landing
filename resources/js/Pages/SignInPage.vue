@@ -1,9 +1,9 @@
 <script setup>
-import { signInUser } from "@/api";
+import { signInUser } from "@/Api";
 import { Link, Head, router } from "@inertiajs/vue3";
 import { reactive, ref } from "vue";
 import { useAuthStore } from "@/Store/auth.js";
-import {useCommonStore} from "@/Store/common.js";
+import { useCommonStore } from "@/Store/common.js";
 
 const authStore = useAuthStore();
 const commonStore = useCommonStore();
@@ -14,7 +14,7 @@ const data = reactive({
 });
 
 const handleLoginUser = async (csrf) => {
-    error.value = '';
+    error.value = "";
     const email = commonStore.email.trim();
     const password = data.password.trim();
 
@@ -25,11 +25,11 @@ const handleLoginUser = async (csrf) => {
         const response = await signInUser({ email, password }, csrf);
 
         if ("user" in response) {
-            router.visit('/');
+            router.visit("/");
             authStore.authenticationInformation.isAuthenticated = true;
             authStore.authenticationInformation.user = response.user;
         } else {
-            throw Error(response.error || '');
+            throw Error(response.error || "");
         }
     } catch (err) {
         if (err) error.value = err;

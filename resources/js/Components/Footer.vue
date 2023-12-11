@@ -1,8 +1,8 @@
 <script setup>
-import { useAuthStore } from "@/store/auth.js";
+import { useAuthStore } from "@/Store/auth.js";
 
 import { Link } from "@inertiajs/vue3";
-import AuthorizationList from "@/components/ui/AuthorizationList.vue";
+import AuthorizationList from "@/Components/ui/AuthorizationList.vue";
 
 const authStore = useAuthStore();
 

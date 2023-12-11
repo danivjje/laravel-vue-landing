@@ -1,9 +1,9 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { useAuthStore } from "@/store/auth.js";
+import { useAuthStore } from "@/Store/auth.js";
 
-import AuthorizationList from "@/components/ui/AuthorizationList.vue";
-import {ref} from "vue";
+import AuthorizationList from "@/Components/ui/AuthorizationList.vue";
+import { ref } from "vue";
 import BurgerMenu from "@/Components/BurgerMenu.vue";
 
 const { navItems } = defineProps({ navItems: Array });
@@ -41,16 +41,14 @@ const burgerIsActive = ref(false);
         </nav>
         <span class="block w-px h-6 bg-[#252C41] rounded-full mx-9 max-xl:hidden"></span>
         <Link href="/admin-panel" class="max-lg:hidden">
-            <MainButton v-if="authStore.authenticationInformation.user?.is_admin" buttonType="blue" class="mr-2">
-                Admin Panel
-            </MainButton>
+            <MainButton v-if="authStore.authenticationInformation.user?.is_admin" buttonType="blue" class="mr-2"> Admin Panel </MainButton>
         </Link>
         <AuthorizationList v-if="!authStore.authenticationInformation.isAuthenticated" class="max-lg:hidden" />
         <MainButton v-else @click="authStore.logOutUser($page.props.csrfToken)" button-type="blue" class="max-lg:hidden">
             Log out
         </MainButton>
         <button @click="burgerIsActive = true" class="w-11 h-11 hidden max-xl:block ml-2 max-sm:ml-auto">
-            <img src="/images/burger-menu-icon.svg" alt="" role="presentation">
+            <img src="/images/burger-menu-icon.svg" alt="" role="presentation" />
         </button>
     </header>
 </template>
