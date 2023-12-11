@@ -1,7 +1,7 @@
 import { router } from '@inertiajs/vue3';
 import { reactive } from "vue";
 import { defineStore } from "pinia";
-import { checkSession, logOut } from "@/api";
+import { checkSession, logOut } from "@/Api";
 
 export const useAuthStore = defineStore('store', () => {
     const authenticationInformation = reactive({
